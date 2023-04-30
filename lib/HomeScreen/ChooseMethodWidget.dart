@@ -18,7 +18,13 @@ class _ChooseMethodWidgetState extends State<ChooseMethodWidget> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
-              Text("What Method Would YouLike To Perform"),
+              Text("What Method Would YouLike To Perform",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold
+                ),
+              ),
             ],
           ),
         ),
@@ -34,7 +40,12 @@ class _ChooseMethodWidgetState extends State<ChooseMethodWidget> {
                   children: [
                     const Padding(
                       padding: EdgeInsets.only(bottom: 10),
-                      child: Text("Find the root methods" , textAlign: TextAlign.center,),
+                      child: Text("Find the root methods" ,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.white
+                        ),
+                      ),
                     ),
                     chooseButtonWidget("bisection", navigateToBisection),
                     chooseButtonWidget("False Position Method",navigateToBisection),
@@ -53,7 +64,11 @@ class _ChooseMethodWidgetState extends State<ChooseMethodWidget> {
                   children: [
                     const Padding(
                       padding: EdgeInsets.only(bottom: 10),
-                      child: Text("Gauss-jordan methods",textAlign: TextAlign.center,),
+                      child: Text("Gauss-jordan methods",textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.white
+                        ),
+                      ),
                     ),
                       chooseButtonWidget("Gauss-Elimination",navigateToBisection),
                       chooseButtonWidget("Gauss-jordan",navigateToBisection),

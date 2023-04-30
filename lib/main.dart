@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:numerical/HomeScreen/chooseMethodScreen.dart';
 import 'package:numerical/bisection/bisectionInputsScreen.dart';
+import 'package:numerical/bisection/equationInputScreen.dart';
 import 'package:numerical/theme/myTheme.dart';
 
 void main() {
@@ -16,10 +17,9 @@ class Myapplication extends StatelessWidget {
       routes: {
           chooseMethodScreen.routeName: (_) => chooseMethodScreen(),
           bisectionInputScreen.routeName: (_) => bisectionInputScreen(),
+          equationInputScreen.routeName: (_) => equationInputScreen(),
       },
-      theme: ThemeData(
-
-      ),
+      theme: ThemeData(),
     );
   }
 }
