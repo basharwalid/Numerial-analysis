@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'equationInputWidget.dart';
 
   class equationInputScreen extends StatelessWidget {
-
     static const String routeName="equation input screen";
   @override
   Widget build(BuildContext context) {
+    String title = ModalRoute.of(context)?.settings.arguments as String;
     return Scaffold(
         body: Container(
             width: double.infinity,
@@ -16,12 +16,12 @@ import 'equationInputWidget.dart';
               mainAxisAlignment: MainAxisAlignment.center,
               // crossAxisAlignment:CrossAxisAlignment.center,
               children: [
-                const Padding(
-                  padding: EdgeInsets.all(15.0),
+                 Padding(
+                  padding: const EdgeInsets.all(15.0),
                   child: Text(
-                    "Bisection Method",
+                    title,
                     textAlign: TextAlign.center,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 24,
                       color: Colors.white,
                     ),
@@ -32,7 +32,7 @@ import 'equationInputWidget.dart';
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, equationInputScreen.routeName);
+                      // Navigator.pushNamed(context, equationInputScreen.routeName);
                     },
                     style: ButtonStyle(
                         backgroundColor:

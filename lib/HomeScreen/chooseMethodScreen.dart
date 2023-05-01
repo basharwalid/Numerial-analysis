@@ -10,7 +10,12 @@ class chooseMethodScreen extends StatelessWidget {
           width: double.infinity,
           height: double.infinity,
           color: const Color(0xff350E0E),
-          child: ChooseMethodWidget(),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ChooseMethodWidget(),
+            ],
+          ),
         ),
     );
   }

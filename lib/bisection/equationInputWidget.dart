@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class equationInputWidget extends StatelessWidget {
-equationInputWidget();
+  equationInputWidget();
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -13,30 +13,20 @@ equationInputWidget();
             Container(
               padding: const EdgeInsets.only(left: 5),
               width: 60,
-              child: Text("Enter Equation" ,
+              child: const Text("Enter Equation" ,
                 textAlign: TextAlign.center,
-                style: const TextStyle(
+                style: TextStyle(
                   color: Colors.white,
                 ),
 
               ),
             ),
-            Expanded(
+            const Expanded(
               child: Padding(
-                padding: const EdgeInsets.all(10),
+                padding: EdgeInsets.all(10),
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15,vertical:8),
-                  child: TextField(
-                    style: const TextStyle(color: Colors.black),
-                    decoration: InputDecoration(
-                        fillColor: Colors.white,
-                        filled: true,
-                        border: OutlineInputBorder(
-                          borderSide: const BorderSide(color: Colors.black),
-                          borderRadius: BorderRadius.circular(20),
-                        )
-                    ),
-                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 15,vertical:8),
+
                 ),
               ),
             ),

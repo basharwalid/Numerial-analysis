@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:numerical/FalsePositionMethod/falsePositionMethodScreen.dart';
 import 'package:numerical/HomeScreen/chooseButtonWidget.dart';
+import 'package:numerical/Newton/newtonMethodScreen.dart';
+import 'package:numerical/Secant/secantMethodScreen.dart';
+import 'package:numerical/Secant/secantMethodWidget.dart';
+import 'package:numerical/SimpleFixedPoint/simplefixedPointScreen.dart';
 import 'package:numerical/bisection/bisectionInputsScreen.dart';
 
 class ChooseMethodWidget extends StatefulWidget {
@@ -11,7 +16,7 @@ class _ChooseMethodWidgetState extends State<ChooseMethodWidget> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Padding(
           padding: const EdgeInsets.all(8),
@@ -48,10 +53,10 @@ class _ChooseMethodWidgetState extends State<ChooseMethodWidget> {
                       ),
                     ),
                     chooseButtonWidget("bisection", navigateToBisection),
-                    chooseButtonWidget("False Position Method",navigateToBisection),
-                    chooseButtonWidget("Secant",navigateToBisection),
-                    chooseButtonWidget("Newton",navigateToBisection),
-                    chooseButtonWidget("Simple Fixed point",navigateToBisection),
+                    chooseButtonWidget("False Position Method",navigateToFalsePositionMethod),
+                    chooseButtonWidget("Secant",navigateToSecant),
+                    chooseButtonWidget("Newton",navigateToNewtonMethod),
+                    chooseButtonWidget("Simple Fixed point",navigateToSimpleFixedPoint),
                   ],
                 ),
               ),
@@ -84,5 +89,17 @@ class _ChooseMethodWidgetState extends State<ChooseMethodWidget> {
 
    navigateToBisection(String title){
     Navigator.pushNamed(context, bisectionInputScreen.routeName , arguments: title);
+  }
+  navigateToFalsePositionMethod(String title){
+    Navigator.pushNamed(context, falsePositionMethodScreen.routeName, arguments: title);
+  }
+  navigateToNewtonMethod(String title){
+    Navigator.pushNamed(context, newtonMethodScreen.routeName, arguments: title);
+  }
+  navigateToSimpleFixedPoint(String title){
+    Navigator.pushNamed(context, simpleFixedPointScreen.routeName, arguments: title);
+  }
+  navigateToSecant(String title){
+    Navigator.pushNamed(context, secantMethodScreen.routeName, arguments: title);
   }
 }
