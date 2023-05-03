@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:numerical/bisection/Bisection.dart';
 import 'package:numerical/bisection/bisectionInputWidget.dart';
 import 'package:numerical/bisection/equationInputScreen.dart';
+import 'package:numerical/bisection/resultScreen.dart';
 
 class bisectionInputScreen extends StatefulWidget {
   static const String routeName = "bisection inputs Screen";
@@ -10,14 +11,14 @@ class bisectionInputScreen extends StatefulWidget {
 }
 
 class _bisectionInputScreenState extends State<bisectionInputScreen> {
+  TextEditingController XLController = TextEditingController();
+  TextEditingController XUtaController = TextEditingController();
+  TextEditingController ErrorController = TextEditingController();
+  TextEditingController IterController = TextEditingController();
+  TextEditingController EquationController = TextEditingController();
   @override
-  Widget build(BuildContext context) {
-    // resizeToAvoidBottomInset: false;
-    TextEditingController XLController = TextEditingController();
-    TextEditingController XUtaController = TextEditingController();
-    TextEditingController ErrorController = TextEditingController();
-    TextEditingController IterController = TextEditingController();
-    TextEditingController EquationController = TextEditingController();
+  Widget build(BuildContext context)
+  {
     String title = ModalRoute.of(context)?.settings.arguments as String;
     return Scaffold(
       body: Container(
@@ -48,19 +49,19 @@ class _bisectionInputScreenState extends State<bisectionInputScreen> {
                 padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton(
                   onPressed: () {
-                      Bisection(double.parse(XLController.text),double.parse(XUtaController.text),EquationController.text,errorStop: double.parse(ErrorController.text));
+                      Bisection bisection = Bisection(xli: double.parse(XLController.text), xui: double.parse(XUtaController.text), equation: EquationController.text,errorStop: double.parse(ErrorController.text));
+                      bisection.calculateBisection();
+                      Navigator.pushNamed(context, resultScreen.routeName , arguments: bisection);
+
                   },
                   style: ButtonStyle(
                       backgroundColor:
                           MaterialStateProperty.all(const Color(0xff052E40))),
                   child: const Text("Calculate"),
                 ),
-              )
+              ),
             ],
           )),
     );
   }
-  // NavigateToEquation(String name){
-  //   Navigator.pushNamed(context, equationInputScreen.routeName , arguments: name);
-  // }
 }

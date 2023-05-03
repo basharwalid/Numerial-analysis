@@ -21,14 +21,12 @@ class SampleFixedPoint {
     cm.bindVariable(x,Number(xValue));
     return exp.evaluate(EvaluationType.REAL, cm);
   }
-
   void calcSampleFixedPoint(){
     if (iterationLimit != 0){
       for(int i = 0 ; i< iterationLimit! ; i++ ){
         iterations.add(i);
         x.add(xI);
         fx.add(calcFunction(x[i]));
-
         if(i == 0 ){
           error.add(100);
         }else {

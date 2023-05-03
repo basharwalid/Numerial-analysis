@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 class bisectioninputWidget extends StatelessWidget {
   String text;
   TextEditingController dataController;

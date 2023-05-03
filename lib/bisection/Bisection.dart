@@ -5,7 +5,7 @@ class Bisection {
   double xui;
   double errorStop;
   double? numberOfIteration;
-  String equation;
+  String equation='';
 
   List<double> xl = [];
   List<double> fxl = [];
@@ -16,7 +16,7 @@ class Bisection {
   List<double> error = [];
   List<int> iteration = [];
 
-  Bisection(this.xli, this.xui, this.equation, {required this.errorStop, this.numberOfIteration = 0});
+  Bisection({ required this.xli, required this.xui, required this.equation, required this.errorStop, this.numberOfIteration = 0});
 
   double calcFunction(double xValue) {
     Variable x = Variable('x');
@@ -27,48 +27,56 @@ class Bisection {
     return exp.evaluate(EvaluationType.REAL, cm);
   }
 
-  void calculateBisection() {
-    if (numberOfIteration != 0) {
-      for (int i = 0; i < numberOfIteration!; i++) {
+  void calculateBisection(){
+
+    if (numberOfIteration != 0){
+      for(int i = 0 ; i<numberOfIteration! ; i++ ){
         xl.add(xli);
         fxl.add(calcFunction(xl[i]));
         xu.add(xui);
         fxu.add(calcFunction(xu[i]));
-        xr.add((xl[i] + xu[i]) / 2);
-        fxr.add(xr[i]);
-        if (i == 0) {
+        xr.add((xl[i] + xu[i])/2);
+        fxr.add(calcFunction(xr[i]));
+
+        if(i == 0 ){
           error.add(100);
-        } else {
-          error.add(((xr[i] - xr[i - 1]) / xr[i]).abs() * 100);
+        }else {
+          error.add(((xr[i] - xr[i-1]) / xr[i]).abs() * 100);
         }
+
         iteration.add(i);
-        if (fxl[i] * fxr[i] > 0) {
+        if (fxl[i]*fxr[i]>0){
           xli = xr[i];
-        } else {
+        } else{
           xui = xr[i];
         }
       }
-    }else{
-      int i =-1;
+    }else {
+      int i = -1;
       do {
+        i++;
         xl.add(xli);
         fxl.add(calcFunction(xl[i]));
         xu.add(xui);
         fxu.add(calcFunction(xu[i]));
-        xr.add((xl[i] + xu[i]) / 2);
-        fxr.add(xr[i]);
-        if (i == 0) {
+        xr.add((xl[i] + xu[i])/2);
+        fxr.add(calcFunction(xr[i]));
+
+        if(i == 0 ){
           error.add(100);
-        } else {
-          error.add(((xr[i] - xr[i - 1]) / xr[i]).abs() * 100);
+        }else {
+          error.add(((xr[i] - xr[i-1]) / xr[i]).abs() * 100);
         }
+
         iteration.add(i);
-        if (fxl[i] * fxr[i] > 0) {
+        if (fxl[i]*fxr[i]>0){
           xli = xr[i];
-        } else {
+        } else{
           xui = xr[i];
         }
+
       }while(error[i] >= errorStop);
     }
   }
 }
+
