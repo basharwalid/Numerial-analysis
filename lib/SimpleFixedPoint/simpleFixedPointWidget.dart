@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class simpleFixedPointWidget extends StatelessWidget {
   String text;
-  simpleFixedPointWidget(this.text);
+  TextEditingController dataController;
+  simpleFixedPointWidget(this.text ,this.dataController);
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -27,6 +28,7 @@ class simpleFixedPointWidget extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16,vertical:8),
                   child: TextField(
+                    controller: dataController,
                     style: const TextStyle(color: Colors.black),
                     decoration: InputDecoration(
                         fillColor: Colors.white,

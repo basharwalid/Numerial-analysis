@@ -10,6 +10,7 @@ class newtonMethodScreen extends StatelessWidget {
 
   TextEditingController ErrorController = TextEditingController();
 
+  TextEditingController EquaitionController = TextEditingController();
   TextEditingController IterationController = TextEditingController();
 
   @override
@@ -38,12 +39,13 @@ class newtonMethodScreen extends StatelessWidget {
               ),
               newtonMethodWidget("Xo" , XoController),
               newtonMethodWidget("error" , ErrorController),
-              newtonMethodWidget("iter" , IterationController),
+              newtonMethodWidget("Equation" ,EquaitionController),
+              newtonMethodWidget("iter" ,IterationController),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton(
                   onPressed: () {
-                    Newton newton = Newton(xI: double.parse(XoController.text), errorStopPoint: double.parse(ErrorController.text));
+                    Newton newton = Newton(xI: double.parse(XoController.text), equation: EquaitionController.text,errorStopPoint: double.parse(ErrorController.text));
                     newton.calcNewton();
                     Navigator.pushNamed(context, NewtonResultScreeen.routeName , arguments: newton);
                   },

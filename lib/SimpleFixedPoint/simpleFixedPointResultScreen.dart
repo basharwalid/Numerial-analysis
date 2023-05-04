@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:numerical/Newton/NewtonModel.dart';
 
-class NewtonResultScreeen extends StatelessWidget {
-  static const String routeName="Newton Result Screen";
+import 'SimpleFixedPointModel.dart';
+
+class simpleFixedPointResultScreen extends StatelessWidget {
+  static const String routeName="Simple Fixed Point Result Screen";
   @override
   Widget build(BuildContext context) {
-    Newton data = ModalRoute.of(context)!.settings.arguments as Newton;
+    SampleFixedPoint data = ModalRoute.of(context)!.settings.arguments as SampleFixedPoint;
     return Scaffold(
       appBar: AppBar(
         title: const Text("Simple Fixed Point"),
@@ -25,7 +26,6 @@ class NewtonResultScreeen extends StatelessWidget {
                     Expanded(child: Text("iteration", textAlign: TextAlign.center)),
                     Expanded(child: Text("Xi", textAlign: TextAlign.center)),
                     Expanded(child: Text("f(xi)", textAlign: TextAlign.center)),
-                    Expanded(child: Text("f‘(xi)", textAlign: TextAlign.center)),
                     Expanded(child: Text("Error", textAlign: TextAlign.center)),
 
                   ],
@@ -51,9 +51,6 @@ class NewtonResultScreeen extends StatelessWidget {
                                   textAlign: TextAlign.center)),
                           Expanded(
                               child: Text(data.calcFunction(data.fx[index]).toStringAsFixed(3),
-                                  textAlign: TextAlign.center)),
-                          Expanded(
-                              child: Text(data.calcFunctionWithDerivative(data.fxd[index]).toStringAsFixed(3),
                                   textAlign: TextAlign.center)),
                           Expanded(
                               child: Text(data.error[index].toStringAsFixed(3),

@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:numerical/SimpleFixedPoint/SimpleFixedPointModel.dart';
+import 'package:numerical/SimpleFixedPoint/simpleFixedPointResultScreen.dart';
 import 'package:numerical/SimpleFixedPoint/simpleFixedPointWidget.dart';
 
 class simpleFixedPointScreen extends StatelessWidget {
   static const String routeName="Simple Fixed Point screen";
+  TextEditingController XiController = TextEditingController();
+  TextEditingController ErrorController = TextEditingController();
+  TextEditingController EquationController = TextEditingController();
+  TextEditingController IterationController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     String title = ModalRoute.of(context)?.settings.arguments as String;
@@ -27,14 +33,18 @@ class simpleFixedPointScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              simpleFixedPointWidget("Xo"),
-              simpleFixedPointWidget("Error"),
-              simpleFixedPointWidget("Iter"),
+              simpleFixedPointWidget("Xo", XiController),
+              simpleFixedPointWidget("Error", ErrorController),
+              simpleFixedPointWidget("Equation", EquationController),
+              simpleFixedPointWidget("Iteration", IterationController),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton(
                   onPressed: () {
-                    // Navigator.pushNamed(context, equationInputScreen.routeName , arguments: title);
+                    SampleFixedPoint simplefixedpoint = SampleFixedPoint(xI: double.parse(XiController.text),
+                        errorStopPoint: double.parse(ErrorController.text),equation: EquationController.text);
+                    simplefixedpoint.calcSampleFixedPoint();
+                    Navigator.pushNamed(context, simpleFixedPointResultScreen.routeName , arguments: simplefixedpoint);
                   },
                   style: ButtonStyle(
                       backgroundColor:
@@ -47,3 +57,4 @@ class simpleFixedPointScreen extends StatelessWidget {
     );
   }
 }
+//-0.9*x^2+1.7*x+2.5

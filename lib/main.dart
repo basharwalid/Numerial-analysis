@@ -5,6 +5,7 @@ import 'package:numerical/HomeScreen/chooseMethodScreen.dart';
 import 'package:numerical/Newton/NewtonResultScreen.dart';
 import 'package:numerical/Newton/newtonMethodScreen.dart';
 import 'package:numerical/Secant/secantMethodScreen.dart';
+import 'package:numerical/SimpleFixedPoint/simpleFixedPointResultScreen.dart';
 import 'package:numerical/SimpleFixedPoint/simplefixedPointScreen.dart';
 import 'package:numerical/bisection/bisectionInputsScreen.dart';
 import 'package:numerical/bisection/equationInputScreen.dart';
@@ -32,6 +33,7 @@ class Myapplication extends StatelessWidget {
           secantMethodScreen.routeName: (_) => secantMethodScreen(),
           falsePositionResultScreen.routeName: (_) => falsePositionResultScreen(),
           NewtonResultScreeen.routeName: (_) => NewtonResultScreeen(),
+          simpleFixedPointResultScreen.routeName: (_) => simpleFixedPointResultScreen(),
       },
       theme: ThemeData(),
     );
