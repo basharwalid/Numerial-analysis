@@ -43,8 +43,12 @@ class resultScreen extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(vertical: 10),
                       child: Row(
                         children: [
-                          Expanded(child: Text(data.iteration[index].toString() ,textAlign: TextAlign.center,)),
-                          Expanded(child: Text(data.xl[index].toStringAsFixed(3),textAlign: TextAlign.center)),
+                          Expanded(child: Text(data.iteration[index].toString() ,
+                            textAlign: TextAlign.center,)),
+
+                          Expanded(child: Text(data.xl[index].toStringAsFixed(3),
+                              textAlign: TextAlign.center)),
+
                           Expanded(
                               child: Text(data
                                   .calcFunction(data.xl[index])

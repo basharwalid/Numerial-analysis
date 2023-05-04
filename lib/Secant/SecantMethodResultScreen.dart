@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:numerical/Newton/NewtonModel.dart';
-class NewtonResultScreeen extends StatelessWidget {
-  static const String routeName="Newton Result Screen";
+
+import 'SecantMethodModel.dart';
+
+class secantMethodResultScreen extends StatelessWidget {
+  static const String routeName="secant method result screen";
   @override
   Widget build(BuildContext context) {
-    Newton data = ModalRoute.of(context)?.settings.arguments as Newton;
+    Secant data = ModalRoute.of(context)!.settings.arguments as Secant;
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Simple Fixed Point"),
+        title: const Text("Secant"),
         centerTitle: true,
       ),
       body: Padding(
@@ -22,9 +24,10 @@ class NewtonResultScreeen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: const [
                     Expanded(child: Text("iteration", textAlign: TextAlign.center)),
+                    Expanded(child: Text("Xi-1", textAlign: TextAlign.center)),
+                    Expanded(child: Text("f(xi-1)", textAlign: TextAlign.center)),
                     Expanded(child: Text("Xi", textAlign: TextAlign.center)),
-                    Expanded(child: Text("f(xi)", textAlign: TextAlign.center)),
-                    Expanded(child: Text("f‘(xi)", textAlign: TextAlign.center)),
+                    Expanded(child: Text("f(Xi)", textAlign: TextAlign.center)),
                     Expanded(child: Text("Error", textAlign: TextAlign.center)),
 
                   ],
@@ -46,13 +49,16 @@ class NewtonResultScreeen extends StatelessWidget {
                                 textAlign: TextAlign.center,
                               )),
                           Expanded(
-                              child: Text(data.x[index].toStringAsFixed(3),
+                              child: Text(data.xPrev[index].toStringAsFixed(3),
                                   textAlign: TextAlign.center)),
                           Expanded(
-                              child: Text(data.calcFunction(data.x[index]).toStringAsFixed(3),
+                              child: Text(data.calcFunction(data.xPrev[index]).toStringAsFixed(3),
                                   textAlign: TextAlign.center)),
                           Expanded(
-                              child: Text(data.calcFunctionWithDerivative(data.x[index]).toStringAsFixed(3),
+                              child: Text(data.xI[index].toStringAsFixed(3),
+                                  textAlign: TextAlign.center)),
+                          Expanded(
+                              child: Text(data.calcFunction(data.xI[index]).toStringAsFixed(3),
                                   textAlign: TextAlign.center)),
                           Expanded(
                               child: Text(data.error[index].toStringAsFixed(3),
@@ -65,7 +71,7 @@ class NewtonResultScreeen extends StatelessWidget {
                 ),
                 Expanded(
                     child: Text(
-                      "The required root = ${data.x.last.toStringAsFixed(3)}",
+                      "The required root = ${data.xI.last.toStringAsFixed(3)}",
                       textAlign: TextAlign.center,
                     ))
               ],

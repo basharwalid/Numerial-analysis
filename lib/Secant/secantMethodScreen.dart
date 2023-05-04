@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:numerical/Secant/SecantMethodResultScreen.dart';
 import 'package:numerical/Secant/secantMethodWidget.dart';
+
+import 'SecantMethodModel.dart';
 
 class secantMethodScreen extends StatelessWidget {
   static const String routeName="Secant Method Screen";
+  TextEditingController XiController = TextEditingController();
+  TextEditingController XiMin1Controller = TextEditingController();
+  TextEditingController ErrorController = TextEditingController();
+  TextEditingController EquationController = TextEditingController();
+  TextEditingController IterationController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     String title = ModalRoute.of(context)?.settings.arguments as String;
@@ -16,26 +24,29 @@ class secantMethodScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             // crossAxisAlignment:CrossAxisAlignment.center,
             children: [
-              const Padding(
-                padding: EdgeInsets.all(15.0),
+               Padding(
+                padding: const EdgeInsets.all(15.0),
                 child: Text(
-                  "Secant Method",
+                  title,
                   textAlign: TextAlign.center,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 24,
                     color: Colors.white,
                   ),
                 ),
               ),
-              secantMethodWidget('Xo'),
-              secantMethodWidget('X-1'),
-              secantMethodWidget('Error'),
-              secantMethodWidget('Iter'),
+              secantMethodWidget('Xi' , XiController),
+              secantMethodWidget('X-1',XiMin1Controller),
+              secantMethodWidget('Error' ,ErrorController),
+              secantMethodWidget('Equation', EquationController),
+              secantMethodWidget('Iter', IterationController),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton(
                   onPressed: () {
-                    // Navigator.pushNamed(context, equationInputScreen.routeName , arguments: title);
+                    Secant secant = Secant(xOfI: double.parse(XiController.text), xOfIMin1: double.parse(XiMin1Controller.text),equation: EquationController.text, errorStopPoint: double.parse(ErrorController.text) );
+                    secant.calcSecant();
+                    Navigator.pushNamed(context,secantMethodResultScreen.routeName , arguments: secant);
                   },
                   style: ButtonStyle(
                       backgroundColor:

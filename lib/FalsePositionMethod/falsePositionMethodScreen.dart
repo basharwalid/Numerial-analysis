@@ -2,21 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:numerical/FalsePositionMethod/FalsePositionMethod.dart';
 import 'package:numerical/FalsePositionMethod/falsePositionMethodWidget.dart';
 import 'package:numerical/FalsePositionMethod/falsePositionResultScreen.dart';
-import 'package:numerical/bisection/equationInputScreen.dart';
 class falsePositionMethodScreen extends StatelessWidget {
   static const String routeName="false position method screen";
   TextEditingController XLController = TextEditingController();
-
   TextEditingController XUtaController = TextEditingController();
-
   TextEditingController ErrorController = TextEditingController();
-
   TextEditingController IterController = TextEditingController();
-
   TextEditingController EquationController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    String title = ModalRoute.of(context)?.settings.arguments as String;
     return Scaffold(
       //resizeToAvoidBottomInset: false,
       body: Container(

@@ -4,7 +4,7 @@ import 'package:math_expressions/math_expressions.dart';
 class Newton{
   double xI ;
   double errorStopPoint ;
-  String equation;
+  String equation = '';
   int? iterationLimit ;
 
   List<double> x = [];
@@ -13,7 +13,7 @@ class Newton{
   List<double> error = [];
   List<int> iterations = [];
 
-  Newton({required this.xI ,required this.errorStopPoint ,required this.equation, this.iterationLimit = 0});
+  Newton({required this.xI ,required this.errorStopPoint,required this.equation , this.iterationLimit = 0});
 
   double calcFunction(double xValue){
     Variable x = Variable('x');

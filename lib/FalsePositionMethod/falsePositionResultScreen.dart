@@ -8,7 +8,7 @@ class falsePositionResultScreen extends StatelessWidget {
     FalsePosition data = ModalRoute.of(context)!.settings.arguments as FalsePosition;
     return Scaffold(
       appBar: AppBar(
-        title: const Text("False Postion Method"),
+        title: const  Text("False Postion Method"),
         centerTitle: true,
       ),
       body: Padding(

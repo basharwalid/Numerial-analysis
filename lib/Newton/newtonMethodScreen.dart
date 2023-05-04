@@ -5,17 +5,13 @@ import 'package:numerical/Newton/newtonMethodWidget.dart';
 
 class newtonMethodScreen extends StatelessWidget {
   static const String routeName="newton method screen";
-
   TextEditingController XoController = TextEditingController();
-
   TextEditingController ErrorController = TextEditingController();
-
   TextEditingController EquaitionController = TextEditingController();
+  TextEditingController EquaitionderivedController = TextEditingController();
   TextEditingController IterationController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
-    String title = ModalRoute.of(context)?.settings.arguments as String;
     return Scaffold(
       // resizeToAvoidBottomInset: false,
       body: Container(
@@ -45,7 +41,7 @@ class newtonMethodScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton(
                   onPressed: () {
-                    Newton newton = Newton(xI: double.parse(XoController.text), equation: EquaitionController.text,errorStopPoint: double.parse(ErrorController.text));
+                    Newton newton = Newton(xI: double.parse(XoController.text),errorStopPoint: double.parse(ErrorController.text),equation: EquaitionController.text);
                     newton.calcNewton();
                     Navigator.pushNamed(context, NewtonResultScreeen.routeName , arguments: newton);
                   },

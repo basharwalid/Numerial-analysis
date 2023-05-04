@@ -1,19 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:numerical/bisection/Bisection.dart';
 import 'package:numerical/bisection/bisectionInputWidget.dart';
-import 'package:numerical/bisection/equationInputScreen.dart';
 import 'package:numerical/bisection/resultScreen.dart';
 
 class bisectionInputScreen extends StatelessWidget {
   static const String routeName = "bisection inputs Screen";
   TextEditingController XLController = TextEditingController();
-
   TextEditingController XUtaController = TextEditingController();
-
   TextEditingController ErrorController = TextEditingController();
-
   TextEditingController IterController = TextEditingController();
-
   TextEditingController EquationController = TextEditingController();
 
   @override

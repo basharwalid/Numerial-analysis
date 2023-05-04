@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class secantMethodWidget extends StatelessWidget {
   String text;
-  secantMethodWidget(this.text);
+  TextEditingController dataController;
+  secantMethodWidget(this.text, this.dataController);
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -23,19 +24,17 @@ class secantMethodWidget extends StatelessWidget {
             ),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.all(10),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16,vertical:8),
-                  child: TextField(
-                    style: const TextStyle(color: Colors.black),
-                    decoration: InputDecoration(
-                        fillColor: Colors.white,
-                        filled: true,
-                        border: OutlineInputBorder(
-                          borderSide: const BorderSide(color: Colors.black),
-                          borderRadius: BorderRadius.circular(20),
-                        )
-                    ),
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                  controller: dataController,
+                  style: const TextStyle(color: Colors.black),
+                  decoration: InputDecoration(
+                      fillColor: Colors.white,
+                      filled: true,
+                      border: OutlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.black),
+                        borderRadius: BorderRadius.circular(20),
+                      )
                   ),
                 ),
               ),

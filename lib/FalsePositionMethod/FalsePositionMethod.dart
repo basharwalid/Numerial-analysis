@@ -36,13 +36,11 @@ class FalsePosition {
         fxu.add(calcFunction(xu[i]));
         xr.add(xu[i]-(fxu[i]*(xl[i]-xu[i]))/(fxl[i]-fxu[i]));
         fxr.add(calcFunction(xr[i]));
-
         if(i == 0 ){
           error.add(100);
         }else {
           error.add(((xr[i] - xr[i-1]) / xr[i]).abs() * 100);
         }
-
         iterations.add(i);
         if (fxl[i]*fxr[i]>0){
           xlI = xr[i];

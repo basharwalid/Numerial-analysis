@@ -1,5 +1,4 @@
 import 'package:math_expressions/math_expressions.dart';
-
 class SampleFixedPoint {
   double xI ;
   double errorStopPoint ;
@@ -11,7 +10,7 @@ class SampleFixedPoint {
   List<double> error = [];
   List<int> iterations = [];
 
-  SampleFixedPoint({required this.xI , required this.errorStopPoint, required this.equation ,this.iterationLimit = 0});
+  SampleFixedPoint({required this.xI , required this.errorStopPoint,required this.equation,this.iterationLimit = 0});
 
   double calcFunction(double xValue){
     Variable x = Variable('x');
