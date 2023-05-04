@@ -4,18 +4,18 @@ import 'package:numerical/bisection/bisectionInputWidget.dart';
 import 'package:numerical/bisection/equationInputScreen.dart';
 import 'package:numerical/bisection/resultScreen.dart';
 
-class bisectionInputScreen extends StatefulWidget {
+class bisectionInputScreen extends StatelessWidget {
   static const String routeName = "bisection inputs Screen";
-  @override
-  State<bisectionInputScreen> createState() => _bisectionInputScreenState();
-}
-
-class _bisectionInputScreenState extends State<bisectionInputScreen> {
   TextEditingController XLController = TextEditingController();
+
   TextEditingController XUtaController = TextEditingController();
+
   TextEditingController ErrorController = TextEditingController();
+
   TextEditingController IterController = TextEditingController();
+
   TextEditingController EquationController = TextEditingController();
+
   @override
   Widget build(BuildContext context)
   {

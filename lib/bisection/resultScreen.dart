@@ -8,7 +8,7 @@ class resultScreen extends StatelessWidget {
     Bisection data = ModalRoute.of(context)?.settings.arguments as Bisection;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Bisection"),
+        title: Text("False Position Method"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(10),

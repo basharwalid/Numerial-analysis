@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:numerical/Newton/NewtonModel.dart';
+import 'package:numerical/Newton/NewtonResultScreen.dart';
 import 'package:numerical/Newton/newtonMethodWidget.dart';
 
 class newtonMethodScreen extends StatelessWidget {
   static const String routeName="newton method screen";
+
+  TextEditingController XoController = TextEditingController();
+
+  TextEditingController ErrorController = TextEditingController();
+
+  TextEditingController IterationController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     String title = ModalRoute.of(context)?.settings.arguments as String;
@@ -27,14 +36,16 @@ class newtonMethodScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              newtonMethodWidget("Xo"),
-              newtonMethodWidget("error"),
-              newtonMethodWidget("iter"),
+              newtonMethodWidget("Xo" , XoController),
+              newtonMethodWidget("error" , ErrorController),
+              newtonMethodWidget("iter" , IterationController),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton(
                   onPressed: () {
-                    // Navigator.pushNamed(context, equationInputScreen.routeName , arguments: title);
+                    Newton newton = Newton(xI: double.parse(XoController.text), errorStopPoint: double.parse(ErrorController.text));
+                    newton.calcNewton();
+                    Navigator.pushNamed(context, NewtonResultScreeen.routeName , arguments: newton);
                   },
                   style: ButtonStyle(
                       backgroundColor:

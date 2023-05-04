@@ -1,13 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:numerical/FalsePositionMethod/FalsePositionMethod.dart';
 import 'package:numerical/FalsePositionMethod/falsePositionMethodWidget.dart';
+import 'package:numerical/FalsePositionMethod/falsePositionResultScreen.dart';
 import 'package:numerical/bisection/equationInputScreen.dart';
 class falsePositionMethodScreen extends StatelessWidget {
   static const String routeName="false position method screen";
+  TextEditingController XLController = TextEditingController();
+
+  TextEditingController XUtaController = TextEditingController();
+
+  TextEditingController ErrorController = TextEditingController();
+
+  TextEditingController IterController = TextEditingController();
+
+  TextEditingController EquationController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     String title = ModalRoute.of(context)?.settings.arguments as String;
     return Scaffold(
-      // resizeToAvoidBottomInset: false,
+      //resizeToAvoidBottomInset: false,
       body: Container(
           width: double.infinity,
           height: double.infinity,
@@ -27,16 +38,18 @@ class falsePositionMethodScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              falsePositionMethodWidget("XL"),
-              falsePositionMethodWidget("XU"),
-              falsePositionMethodWidget("Error"),
-              falsePositionMethodWidget("Iter"),
-              falsePositionMethodWidget("Equation"),
+              falsePositionMethodWidget("XL",XLController),
+              falsePositionMethodWidget("XU",XUtaController),
+              falsePositionMethodWidget("Error", ErrorController),
+              falsePositionMethodWidget("Iter",IterController),
+              falsePositionMethodWidget("Equation",EquationController),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton(
                   onPressed: () {
-                       // Navigator.pushNamed(context, equationInputScreen.routeName , arguments: title);
+                    FalsePosition falsePosition = FalsePosition(xlI: double.parse(XLController.text), xuI: double.parse(XUtaController.text),equation: EquationController.text ,errorStopPoint: double.parse(ErrorController.text));
+                    falsePosition.calcFalsePosition();
+                    Navigator.pushNamed(context, falsePositionResultScreen.routeName , arguments: falsePosition);
                   },
                   style: ButtonStyle(
                       backgroundColor:
@@ -49,3 +62,4 @@ class falsePositionMethodScreen extends StatelessWidget {
     );
   }
 }
+// -13-20*x+19*x^2-3*x^2

@@ -16,7 +16,7 @@ class FalsePosition {
   List<double> error = [] ;
   List<int> iterations = [];
 
-  FalsePosition({required this.xlI , required this.xuI , required this.errorStopPoint , this.iterationLimit = 0});
+  FalsePosition({required this.xlI , required this.xuI , required this.equation ,required this.errorStopPoint , this.iterationLimit =0});
 
   double calcFunction(double xValue){
     Variable x = Variable('x');

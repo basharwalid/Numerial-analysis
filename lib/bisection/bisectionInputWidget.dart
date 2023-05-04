@@ -11,7 +11,7 @@ class bisectioninputWidget extends StatelessWidget {
           padding: const EdgeInsets.only(left: 5),
           width: 60,
           child: Text(text ,
-          textAlign: TextAlign.end,
+          textAlign: TextAlign.center,
           style: const TextStyle(
             color: Colors.white,
           ),
