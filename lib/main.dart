@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:numerical/FalsePositionMethod/falsePositionMethodScreen.dart';
 import 'package:numerical/FalsePositionMethod/falsePositionResultScreen.dart';
 import 'package:numerical/HomeScreen/chooseMethodScreen.dart';
+import 'package:numerical/Matrix/MatrixView.dart';
 import 'package:numerical/Newton/NewtonResultScreen.dart';
 import 'package:numerical/Newton/newtonMethodScreen.dart';
 import 'package:numerical/Secant/SecantMethodResultScreen.dart';
@@ -36,6 +37,7 @@ class Myapplication extends StatelessWidget {
           NewtonResultScreeen.routeName: (_) => NewtonResultScreeen(),
           simpleFixedPointResultScreen.routeName: (_) => simpleFixedPointResultScreen(),
           secantMethodResultScreen.routeName: (_) => secantMethodResultScreen(),
+          MatrixScreen.routeName: (_) => MatrixScreen()
       },
       theme: ThemeData(),
     );

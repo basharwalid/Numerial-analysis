@@ -13,11 +13,15 @@ class newtonMethodScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color(0xff1B0820),
+        elevation: 0,
+      ),
       // resizeToAvoidBottomInset: false,
       body: Container(
           width: double.infinity,
           height: double.infinity,
-          color: const Color(0xff350E0E),
+          color: const Color(0xff1B0820),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             // crossAxisAlignment:CrossAxisAlignment.center,
@@ -47,7 +51,7 @@ class newtonMethodScreen extends StatelessWidget {
                   },
                   style: ButtonStyle(
                       backgroundColor:
-                      MaterialStateProperty.all(const Color(0xff052E40))),
+                      MaterialStateProperty.all(const Color(0xff5F7A3C))),
                   child: const Text("Calculate"),
                 ),
               )

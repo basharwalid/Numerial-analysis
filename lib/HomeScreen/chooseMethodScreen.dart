@@ -9,7 +9,7 @@ class chooseMethodScreen extends StatelessWidget {
         body: Container(
           width: double.infinity,
           height: double.infinity,
-          color: const Color(0xff350E0E),
+          color: const Color(0xff1B0820),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

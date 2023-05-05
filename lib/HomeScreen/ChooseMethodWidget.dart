@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:numerical/FalsePositionMethod/falsePositionMethodScreen.dart';
 import 'package:numerical/HomeScreen/chooseButtonWidget.dart';
+import 'package:numerical/Matrix/MatrixModel.dart';
+import 'package:numerical/Matrix/MatrixView.dart';
 import 'package:numerical/Newton/newtonMethodScreen.dart';
 import 'package:numerical/Secant/secantMethodScreen.dart';
 import 'package:numerical/Secant/secantMethodWidget.dart';
@@ -75,7 +77,7 @@ class _ChooseMethodWidgetState extends State<ChooseMethodWidget> {
                         ),
                       ),
                     ),
-                      chooseButtonWidget("Gauss-Elimination",navigateToBisection),
+                      chooseButtonWidget("Gauss-Elimination",navigateToGaussElimination),
                       chooseButtonWidget("Gauss-jordan",navigateToBisection),
                   ],
                 ),
@@ -101,5 +103,8 @@ class _ChooseMethodWidgetState extends State<ChooseMethodWidget> {
   }
   navigateToSecant(String title){
     Navigator.pushNamed(context, secantMethodScreen.routeName, arguments: title);
+  }
+  navigateToGaussElimination(String title){
+    Navigator.pushNamed(context, MatrixScreen.routeName, arguments: title);
   }
 }

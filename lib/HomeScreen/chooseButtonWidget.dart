@@ -14,7 +14,7 @@ chooseButtonWidget(this.name ,this.onbuttonPress);
         },
         style: ButtonStyle(
             backgroundColor:
-            MaterialStateProperty.all(const Color(0xff052E40))),
+            MaterialStateProperty.all(const Color(0xff5F7A3C))),
         child:Text( name,
           textAlign: TextAlign.center,
         ),

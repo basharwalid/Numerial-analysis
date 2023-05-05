@@ -7,7 +7,7 @@ class NewtonResultScreeen extends StatelessWidget {
     Newton data = ModalRoute.of(context)?.settings.arguments as Newton;
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Simple Fixed Point"),
+        title: const Text("Newton"),
         centerTitle: true,
       ),
       body: Padding(

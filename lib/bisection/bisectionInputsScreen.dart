@@ -16,13 +16,16 @@ class bisectionInputScreen extends StatelessWidget {
   {
     String title = ModalRoute.of(context)?.settings.arguments as String;
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color(0xff1B0820),
+        elevation: 0,
+      ),
       body: Container(
           width: double.infinity,
           height: double.infinity,
-          color: const Color(0xff350E0E),
+          color: const Color(0xff1B0820),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            // crossAxisAlignment:CrossAxisAlignment.center,
             children: [
               const Padding(
                 padding: EdgeInsets.all(15.0),
@@ -47,11 +50,10 @@ class bisectionInputScreen extends StatelessWidget {
                       Bisection bisection = Bisection(xli: double.parse(XLController.text), xui: double.parse(XUtaController.text), equation: EquationController.text,errorStop: double.parse(ErrorController.text));
                       bisection.calculateBisection();
                       Navigator.pushNamed(context, resultScreen.routeName , arguments: bisection);
-
                   },
                   style: ButtonStyle(
                       backgroundColor:
-                          MaterialStateProperty.all(const Color(0xff052E40))),
+                          MaterialStateProperty.all(const Color(0xff5F7A3C))),
                   child: const Text("Calculate"),
                 ),
               ),
