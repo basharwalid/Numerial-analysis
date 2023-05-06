@@ -58,7 +58,6 @@ class Newton{
         x.add(xI);
         fx.add(calcFunction(x[i]));
         fxd.add(calcFunctionWithDerivative(x[i]));
-
         if(i == 0 ){
           error.add(100);
         }else {

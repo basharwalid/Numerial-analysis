@@ -1,11 +1,11 @@
 import 'package:math_expressions/math_expressions.dart';
 
-class Bisection {
+class Bisection { //model
   double xli;
   double xui;
   double errorStop;
   double? numberOfIteration;
-  String equation='';
+  String equation;
 
   List<double> xl = [];
   List<double> fxl = [];
@@ -38,7 +38,7 @@ class Bisection {
         xr.add((xl[i] + xu[i])/2);
         fxr.add(calcFunction(xr[i]));
 
-        if(i == 0 ){
+        if(i == 0){
           error.add(100);
         }else {
           error.add(((xr[i] - xr[i-1]) / xr[i]).abs() * 100);
@@ -62,7 +62,7 @@ class Bisection {
         xr.add((xl[i] + xu[i])/2);
         fxr.add(calcFunction(xr[i]));
 
-        if(i == 0 ){
+        if(i == 0){
           error.add(100);
         }else {
           error.add(((xr[i] - xr[i-1]) / xr[i]).abs() * 100);

@@ -45,6 +45,8 @@ class MatriXViewModel extends ChangeNotifier {
     if (formKey.currentState!.validate()) {
       readInputs();
       gaussEliminationWithoutPartialPivot();
+      readInputs();
+      gaussEliminationWithPartialPivoting();
     }
   }
 
@@ -87,59 +89,20 @@ class MatriXViewModel extends ChangeNotifier {
 
   void gaussEliminationWithPartialPivoting() {
     Matrix matrix = matrices[0];
-
-    if (matrix.rowOne[0].abs() > matrix.rowTwo[0].abs()) {
-      if (matrix.rowOne[0].abs() > matrix.rowThree[0].abs()) {
-        if (matrix.rowTwo[0].abs() < matrix.rowThree[0].abs()) {
-          for (int i = 0; i < matrix.rowTwo.length; i++) {
-            double temp = matrix.rowTwo[i];
-            matrix.rowTwo[i] = matrix.rowThree[i];
-            matrix.rowThree[i] = temp;
-          }
-        }
-      }
-    }else{
-      for (int i = 0; i < matrix.rowTwo.length; i++) {
-        double temp = matrix.rowTwo[i];
-        matrix.rowTwo[i] = matrix.rowOne[i];
-        matrix.rowOne[i] = temp;
-      }
-      if (matrix.rowTwo[0].abs() < matrix.rowThree[0].abs()){
-        for (int i = 0; i < matrix.rowTwo.length; i++) {
-          double temp = matrix.rowTwo[i];
-          matrix.rowTwo[i] = matrix.rowThree[i];
-          matrix.rowThree[i] = temp;
-        }
-      }
-      if(matrix.rowOne[0].abs() < matrix.rowTwo[0].abs()){
-        for (int i = 0; i < matrix.rowTwo.length; i++) {
-          double temp = matrix.rowTwo[i];
-          matrix.rowTwo[i] = matrix.rowOne[i];
-          matrix.rowOne[i] = temp;
-        }
-      }
-    }
-
+    matrix.sortMatrixFirstTime();
     double m21 = matrix.rowTwo[0] / matrix.rowOne[0];
+    print(m21);
     double m31 = matrix.rowThree[0] / matrix.rowOne[0];
-
+    print(m31);
     for (int i = 0; i < matrix.rowOne.length; i++) {
       matrix.rowTwo[i] = matrix.rowTwo[i] - (m21 * matrix.rowOne[i]);
       matrix.rowThree[i] = matrix.rowThree[i] - (m31 * matrix.rowOne[i]);
     }
 
     matrices.add(matrix);
-
-    if(matrix.rowTwo[1].abs()<matrix.rowThree[1].abs()){
-      for (int i = 0; i < matrix.rowTwo.length; i++) {
-        double temp = matrix.rowTwo[i];
-        matrix.rowTwo[i] = matrix.rowThree[i];
-        matrix.rowThree[i] = temp;
-      }
-    }
-
+    matrix.sortMatrixSecondTime();
     double m32 = matrix.rowThree[1] / matrix.rowTwo[1];
-
+    print(m32);
     for (int i = 0; i < matrix.rowThree.length; i++) {
       matrix.rowThree[i] = matrix.rowThree[i] - (m32 * matrix.rowTwo[i]);
     }
@@ -154,3 +117,5 @@ class MatriXViewModel extends ChangeNotifier {
     print('x1 : $x1');
   }
 }
+
+
