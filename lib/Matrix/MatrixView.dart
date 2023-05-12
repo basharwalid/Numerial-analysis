@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:numerical/Matrix/MatrixButton.dart';
 import 'package:numerical/Matrix/MatrixTextField.dart';
 import 'package:numerical/Matrix/gausseliminationModel.dart';
 import 'package:provider/provider.dart';
@@ -23,9 +22,9 @@ class _MatrixScreenState extends State<MatrixScreen> {
     return ChangeNotifierProvider(
       create: (context) => viewModel,
       child: Scaffold(
-        backgroundColor: Color(0xff1B0820),
+        backgroundColor: const Color(0xff1B0820),
         appBar: AppBar(
-          backgroundColor: Color(0xff1B0820),
+          backgroundColor: const Color(0xff1B0820),
           elevation: 0,
         ),
         body: Consumer<MatriXViewModel>(

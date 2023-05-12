@@ -116,6 +116,46 @@ class MatriXViewModel extends ChangeNotifier {
     x1 = (matrix.rowOne[3] - ((x2 * matrix.rowOne[1]) + (x3 * matrix.rowOne[2]))) / (matrix.rowOne[0]);
     print('x1 : $x1');
   }
-}
+
+  void LuCalculataion(){
+    matrices = [];
+    Matrix matrixA = Matrix();
+    for (int i = 0; i < rowOneControllers.length-1 ; i++) {
+      matrixA.rowOne.add(double.parse(rowOneControllers[i].text));
+      matrixA.rowTwo.add(double.parse(rowTwoControllers[i].text));
+      matrixA.rowThree.add(double.parse(rowThreeControllers[i].text));
+    }
+
+
+    matrices.add(matrixA);
+    Matrix matrixB = Matrix();
+    matrixB.rowOne.add(double.parse(rowOneControllers[3].text));
+    matrixB.rowTwo.add(double.parse(rowTwoControllers[3].text));
+    matrixB.rowThree.add(double.parse(rowThreeControllers[3].text));
+
+
+
+    double m21 = matrixA.rowTwo[0] / matrixA.rowOne[0];
+    print(m21);
+    double m31 = matrixA.rowThree[0] / matrixA.rowOne[0];
+    print(m31);
+    for (int i = 0; i < matrixA.rowOne.length-1; i++) {
+      matrixA.rowTwo[i] = matrixA.rowTwo[i] - (m21 * matrixA.rowOne[i]);
+      matrixA.rowThree[i] = matrixA.rowThree[i] - (m31 * matrixA.rowOne[i]);
+    }
+    Matrix matrixL = Matrix();
+    matrixL.rowOne.add(double.parse(rowOneControllers[3].text));
+    matrixL.rowTwo.add(double.parse(rowTwoControllers[3].text));
+    matrixL.rowThree.add(double.parse(rowThreeControllers[3].text));
+    matrixL.rowOne.add(double.parse(rowOneControllers[3].text));
+    matrixL.rowTwo.add(double.parse(rowTwoControllers[3].text));
+    matrixL.rowThree.add(double.parse(rowThreeControllers[3].text));
+    matrixL.rowOne.add(double.parse(rowOneControllers[3].text));
+    matrixL.rowTwo.add(double.parse(rowTwoControllers[3].text));
+    matrixL.rowThree.add(double.parse(rowThreeControllers[3].text));
+  }
+
+  }
+
 
 
