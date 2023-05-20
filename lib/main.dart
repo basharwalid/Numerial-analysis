@@ -3,6 +3,7 @@ import 'package:numerical/FalsePositionMethod/falsePositionMethodScreen.dart';
 import 'package:numerical/FalsePositionMethod/falsePositionResultScreen.dart';
 import 'package:numerical/HomeScreen/chooseMethodScreen.dart';
 import 'package:numerical/Matrix/MatrixView.dart';
+import 'package:numerical/Matrix/gaussEliminationResultScreen.dart';
 import 'package:numerical/Newton/NewtonResultScreen.dart';
 import 'package:numerical/Newton/newtonMethodScreen.dart';
 import 'package:numerical/Secant/SecantMethodResultScreen.dart';
@@ -12,12 +13,16 @@ import 'package:numerical/SimpleFixedPoint/simplefixedPointScreen.dart';
 import 'package:numerical/bisection/bisectionInputsScreen.dart';
 import 'package:numerical/bisection/equationInputScreen.dart';
 import 'package:numerical/bisection/resultScreen.dart';
+import 'package:numerical/matricesProvider/matricesProvider.dart';
 import 'package:numerical/theme/myTheme.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(Myapplication());
+  runApp(ChangeNotifierProvider(
+    create: (context) => matricesProvider(),
+      child: Myapplication())
+  );
 }
-
 class Myapplication extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -37,7 +42,8 @@ class Myapplication extends StatelessWidget {
           NewtonResultScreeen.routeName: (_) => NewtonResultScreeen(),
           simpleFixedPointResultScreen.routeName: (_) => simpleFixedPointResultScreen(),
           secantMethodResultScreen.routeName: (_) => secantMethodResultScreen(),
-          MatrixScreen.routeName: (_) => MatrixScreen()
+          MatrixScreen.routeName: (_) => MatrixScreen(),
+          gaussEliminationResultScreen.routeName: (_) => gaussEliminationResultScreen()
       },
       theme: ThemeData(),
     );

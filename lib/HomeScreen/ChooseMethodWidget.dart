@@ -77,8 +77,7 @@ class _ChooseMethodWidgetState extends State<ChooseMethodWidget> {
                         ),
                       ),
                     ),
-                      chooseButtonWidget("Gauss-Elimination",navigateToGaussElimination),
-                      chooseButtonWidget("Gauss-jordan",navigateToBisection),
+                      chooseButtonWidget("Gauss-Elimination",navigateToGaussElimination)
                   ],
                 ),
               ),

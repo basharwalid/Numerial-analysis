@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:numerical/Matrix/MatrixTextField.dart';
 import 'package:numerical/Matrix/gausseliminationModel.dart';
+import 'package:numerical/matricesProvider/matricesProvider.dart';
 import 'package:provider/provider.dart';
 
 import 'MatrixButton.dart';
@@ -11,12 +12,13 @@ class MatrixScreen extends StatefulWidget {
   @override
   State<MatrixScreen> createState() => _MatrixScreenState();
 }
-
 class _MatrixScreenState extends State<MatrixScreen> {
   MatriXViewModel viewModel = MatriXViewModel();
-
-
-
+  @override
+  void initState() {
+    super.initState();
+    viewModel.provider = Provider.of<matricesProvider>(context, listen: false);
+  }
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -83,7 +85,6 @@ class _MatrixScreenState extends State<MatrixScreen> {
                       ],
                     ),
                   ),
-
                 ],
               ),
             ),
@@ -92,6 +93,5 @@ class _MatrixScreenState extends State<MatrixScreen> {
       ),
     );
   }
-
 
 }
