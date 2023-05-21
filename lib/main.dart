@@ -3,7 +3,7 @@ import 'package:numerical/FalsePositionMethod/falsePositionMethodScreen.dart';
 import 'package:numerical/FalsePositionMethod/falsePositionResultScreen.dart';
 import 'package:numerical/HomeScreen/chooseMethodScreen.dart';
 import 'package:numerical/Matrix/MatrixView.dart';
-import 'package:numerical/Matrix/gaussEliminationResultScreen.dart';
+import 'package:numerical/Matrix/MatrixResultScreen.dart';
 import 'package:numerical/Newton/NewtonResultScreen.dart';
 import 'package:numerical/Newton/newtonMethodScreen.dart';
 import 'package:numerical/Secant/SecantMethodResultScreen.dart';
@@ -43,7 +43,8 @@ class Myapplication extends StatelessWidget {
           simpleFixedPointResultScreen.routeName: (_) => simpleFixedPointResultScreen(),
           secantMethodResultScreen.routeName: (_) => secantMethodResultScreen(),
           MatrixScreen.routeName: (_) => MatrixScreen(),
-          gaussEliminationResultScreen.routeName: (_) => gaussEliminationResultScreen()
+        MatrixScreen.routeName :(_) => MatrixScreen(),
+        MatricesResultScreen.routeName :(_) => MatricesResultScreen(),
       },
       theme: ThemeData(),
     );

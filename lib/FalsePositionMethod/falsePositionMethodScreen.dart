@@ -45,7 +45,7 @@ class falsePositionMethodScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton(
                   onPressed: () {
-                    FalsePosition falsePosition = FalsePosition(xlI: double.parse(XLController.text), xuI: double.parse(XUtaController.text),equation: EquationController.text ,errorStopPoint: double.parse(ErrorController.text));
+                    FalsePosition falsePosition = FalsePosition(xlI: double.parse(XLController.text), xuI: double.parse(XUtaController.text),equation: EquationController.text ,errorStopPoint: double.parse(ErrorController.text) ,iterationLimit: int.parse(IterController.text));
                     falsePosition.calcFalsePosition();
                     Navigator.pushNamed(context, falsePositionResultScreen.routeName , arguments: falsePosition);
                   },

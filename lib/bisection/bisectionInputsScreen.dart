@@ -47,7 +47,7 @@ class bisectionInputScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton(
                   onPressed: () {
-                      Bisection bisection = Bisection(xli: double.parse(XLController.text), xui: double.parse(XUtaController.text), equation: EquationController.text,errorStop: double.parse(ErrorController.text));
+                      Bisection bisection = Bisection(xli: double.parse(XLController.text), xui: double.parse(XUtaController.text), equation: EquationController.text,errorStop: double.parse(ErrorController.text),numberOfIteration: int.parse(IterController.text));
                       bisection.calculateBisection();
                       Navigator.pushNamed(context, resultScreen.routeName , arguments: bisection);
                   },

@@ -48,7 +48,7 @@ class secantMethodScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton(
                   onPressed: () {
-                    Secant secant = Secant(xOfI: double.parse(XiController.text), xOfIMin1: double.parse(XiMin1Controller.text),equation: EquationController.text, errorStopPoint: double.parse(ErrorController.text) );
+                    Secant secant = Secant(xOfI: double.parse(XiController.text), xOfIMin1: double.parse(XiMin1Controller.text),equation: EquationController.text, errorStopPoint: double.parse(ErrorController.text) ,iterationLimit: int.parse( IterationController.text));
                     secant.calcSecant();
                     Navigator.pushNamed(context,secantMethodResultScreen.routeName , arguments: secant);
                   },

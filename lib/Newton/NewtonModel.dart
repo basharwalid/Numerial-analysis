@@ -47,7 +47,6 @@ class Newton{
         }else {
           error.add(((x[i] - x[i-1]) / x[i]).abs() * 100);
         }
-
         xI = x[i] - (fx[i]/fxd[i]);
       }
     }else {
@@ -63,7 +62,6 @@ class Newton{
         }else {
           error.add(((x[i] - x[i-1]) / x[i]).abs() * 100);
         }
-
         xI = x[i] - (fx[i]/fxd[i]);
       }while(error[i] >= errorStopPoint);
     }

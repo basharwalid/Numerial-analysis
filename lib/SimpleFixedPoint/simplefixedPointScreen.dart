@@ -46,7 +46,7 @@ class simpleFixedPointScreen extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () {
                     SampleFixedPoint simplefixedpoint = SampleFixedPoint(xI: double.parse(XiController.text),
-                        errorStopPoint: double.parse(ErrorController.text),equation: EquationController.text);
+                        errorStopPoint: double.parse(ErrorController.text),equation: EquationController.text ,iterationLimit: int.parse(IterationController.text));
                     simplefixedpoint.calcSampleFixedPoint();
                     Navigator.pushNamed(context, simpleFixedPointResultScreen.routeName , arguments: simplefixedpoint);
                   },

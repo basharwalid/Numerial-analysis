@@ -4,7 +4,7 @@ class Bisection { //model
   double xli;
   double xui;
   double errorStop;
-  double? numberOfIteration;
+  int? numberOfIteration;
   String equation;
 
   List<double> xl = [];

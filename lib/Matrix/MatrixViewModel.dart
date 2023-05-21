@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:numerical/Matrix/MatrixNavigator.dart';
 import 'package:numerical/matricesProvider/matricesProvider.dart';
+
 import 'MatrixModel.dart';
 
 class MatriXViewModel extends ChangeNotifier {
@@ -12,6 +14,8 @@ class MatriXViewModel extends ChangeNotifier {
   double m21 = 0;
   double m31 = 0;
   double m32 = 0;
+
+  MatrixNavigator? navigator;
 
   final formKey = GlobalKey<FormState>();
   List<TextEditingController> rowOneControllers = [
@@ -34,7 +38,9 @@ class MatriXViewModel extends ChangeNotifier {
     TextEditingController(),
     TextEditingController(),
   ];
-  matricesProvider? provider;
+
+  matricesProvider? provider ;
+
   void readInputs() {
     matrix = Matrix();
     for (int i = 0; i < rowOneControllers.length; i++) {
@@ -48,11 +54,9 @@ class MatriXViewModel extends ChangeNotifier {
     if(formKey.currentState != null){
       if (formKey.currentState!.validate()) {
         readInputs();
-        calcCramer();
       }
     }else{
       readInputs();
-      calcCramer();
     }
   }
 
@@ -63,8 +67,10 @@ class MatriXViewModel extends ChangeNotifier {
     return null;
   }
 
+
   // function to calculate the matrix using gauss elimination with out partial pivoting
   List<Matrix> calcGaussElimination() {
+    valid();
     List<Matrix> matrices = [];
 
     // add the matrix to matrices list
@@ -97,6 +103,13 @@ class MatriXViewModel extends ChangeNotifier {
     return matrices;
   }
 
+
+  void gaussElimination(){
+    List<Matrix> matrices = calcGaussElimination();
+    provider!.updateDataForGauss(x1, x2, x3, m21, m31, m32, matrices, "Gauss Elimination");
+    navigator!.goToResultScreen();
+  }
+
   void calcMatrixWithLU() {
     List<Matrix> matrices = calcGaussElimination();
 
@@ -106,16 +119,23 @@ class MatriXViewModel extends ChangeNotifier {
     L.rowTwo = [m21, 1, 0];
     L.rowThree = [m31, m32, 1];
 
+
     // impl the B matrix
     Matrix B = Matrix();
     B.rowOne.add(matrices[0].rowOne[3]);
     B.rowTwo.add(matrices[0].rowTwo[3]);
     B.rowThree.add(matrices[0].rowThree[3]);
 
+
     // calc the value of the matrix c
     double c1 = B.rowOne[0];
     double c2 = B.rowTwo[0] - (c1 * m21);
     double c3 = B.rowThree[0] - ((c1 * m31) + (m32 * c2));
+
+    Matrix C = Matrix();
+    C.rowOne.add(c1);
+    C.rowTwo.add(c2);
+    C.rowThree.add(c3);
 
     // imp the U matrix
     Matrix U = Matrix();
@@ -135,12 +155,23 @@ class MatriXViewModel extends ChangeNotifier {
       matrices[matrices.length - 1].rowThree[2]
     ];
 
+    matrices = [];
+
+    matrices.add(L);
+    matrices.add(B);
+    matrices.add(U);
+    matrices.add(C);
+
     x3 = c3 / U.rowThree[2];
     x2 = (c2 - (U.rowTwo[2] * x3)) / U.rowTwo[1];
     x1 = (c1 - ((U.rowOne[1] * x2) + (U.rowOne[2] * x3))) / U.rowOne[0];
+
+    provider!.updateDataForLU(x1, x2, x3, matrices , "LU");
+    navigator!.goToResultScreen();
   }
 
-  List<Matrix> calcGaussJordan() {
+  void calcGaussJordan() {
+    valid();
     List<Matrix> matrices = [];
     matrices.add(matrix.copyMatrix());
 
@@ -202,7 +233,8 @@ class MatriXViewModel extends ChangeNotifier {
     x2 = matrix.rowTwo[3] / matrix.rowTwo[1];
     x3 = matrix.rowThree[3] / matrix.rowThree[2];
 
-    return matrices;
+    provider!.updateDataForGauss(x1, x2, x3, m21, m31, m32, matrices, "Gauss Jordan");
+    navigator!.goToResultScreen();
   }
 
   void calcCramer() {
@@ -247,6 +279,9 @@ class MatriXViewModel extends ChangeNotifier {
     x1 = a1Equivalent / aEquivalent;
     x2 = a2Equivalent / aEquivalent;
     x3 = a3Equivalent / aEquivalent;
+
+    provider!.updateDataForCramer(x1, x2, x3, aEquivalent, a1Equivalent, a2Equivalent, a3Equivalent, matrices, "Cramer");
+    navigator!.goToResultScreen();
   }
 
   double calcAEquivalent (Matrix matrix){

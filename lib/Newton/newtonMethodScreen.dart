@@ -45,7 +45,7 @@ class newtonMethodScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton(
                   onPressed: () {
-                    Newton newton = Newton(xI: double.parse(XoController.text),errorStopPoint: double.parse(ErrorController.text),equation: EquaitionController.text);
+                    Newton newton = Newton(xI: double.parse(XoController.text),errorStopPoint: double.parse(ErrorController.text),equation: EquaitionController.text , iterationLimit: int.parse( IterationController.text));
                     newton.calcNewton();
                     Navigator.pushNamed(context, NewtonResultScreeen.routeName , arguments: newton);
                   },
