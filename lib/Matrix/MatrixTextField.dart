@@ -32,7 +32,7 @@ class MatrixTextField extends StatelessWidget {
         decoration: InputDecoration(
           contentPadding:const EdgeInsets.all(30),
           filled: true,
-          fillColor: Colors.white,
+          fillColor: Colors.grey[400],
           hintText: title,
           hintStyle: const TextStyle(
             color: Colors.grey,

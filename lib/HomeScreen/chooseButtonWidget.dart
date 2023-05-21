@@ -8,15 +8,23 @@ chooseButtonWidget(this.name ,this.onbuttonPress);
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: ElevatedButton(
-        onPressed: () {
-          onbuttonPress(name);
-        },
-        style: ButtonStyle(
-            backgroundColor:
-            MaterialStateProperty.all(const Color(0xff5F7A3C))),
-        child:Text( name,
-          textAlign: TextAlign.center,
+      child: Container(
+        // margin: EdgeInsets.all(20),
+        child: ElevatedButton(
+          onPressed: () {
+            onbuttonPress(name);
+          },
+          style: ButtonStyle(
+            padding: MaterialStateProperty.all(EdgeInsets.all(20)),
+              backgroundColor:
+              MaterialStateProperty.all(const Color(0xff5F7A3C))),
+          child:Text( name,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 20
+            ),
+          ),
         ),
       ),
     );

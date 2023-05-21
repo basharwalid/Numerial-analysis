@@ -21,7 +21,7 @@ class _ChooseMethodWidgetState extends State<ChooseMethodWidget> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Padding(
-          padding: const EdgeInsets.all(8),
+          padding: const EdgeInsets.all(30),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
@@ -41,7 +41,7 @@ class _ChooseMethodWidgetState extends State<ChooseMethodWidget> {
           children: [
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(15),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
@@ -65,19 +65,19 @@ class _ChooseMethodWidgetState extends State<ChooseMethodWidget> {
             ),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.all(8),
+                padding: const EdgeInsets.all(15),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     const Padding(
                       padding: EdgeInsets.only(bottom: 10),
-                      child: Text("Gauss-jordan methods",textAlign: TextAlign.center,
+                      child: Text("Linear Algebraic Equations",textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.white
                         ),
                       ),
                     ),
-                      chooseButtonWidget("Gauss-Elimination",navigateToGaussElimination)
+                      chooseButtonWidget("Matrices",navigateToGaussElimination)
                   ],
                 ),
               ),

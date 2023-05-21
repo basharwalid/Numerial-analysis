@@ -31,7 +31,7 @@ class newtonMethodWidget extends StatelessWidget {
                     controller: dataController,
                     style: const TextStyle(color: Colors.black),
                     decoration: InputDecoration(
-                        fillColor: Colors.white,
+                        fillColor: Colors.grey[400],
                         filled: true,
                         border: OutlineInputBorder(
                           borderSide: const BorderSide(color: Colors.black),

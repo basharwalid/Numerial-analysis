@@ -53,9 +53,19 @@ class secantMethodScreen extends StatelessWidget {
                     Navigator.pushNamed(context,secantMethodResultScreen.routeName , arguments: secant);
                   },
                   style: ButtonStyle(
+                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),),
+                      padding: MaterialStateProperty.all(EdgeInsets.only(left:100 , right: 100 , top: 20 , bottom: 20)),
                       backgroundColor:
                       MaterialStateProperty.all(const Color(0xff5F7A3C))),
-                  child: const Text("Calculate"),
+                  child: const Text(
+                    "Calculate",
+                    style: TextStyle(color: Colors.black,
+                        fontSize: 25
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
               )
             ],
